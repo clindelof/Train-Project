@@ -12,4 +12,4 @@ CSE 2010, Spring 2016 Final Project
 
 
 
-[Project Web Page](http://clindelof.github.io/Train-Project.)
+[Project Web Page](http://clindelof.github.io/Train-Project)
