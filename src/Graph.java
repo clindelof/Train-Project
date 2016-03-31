@@ -1,9 +1,3 @@
-/*
- * Author: Christopher Lindelof, chris@chrislindelof.com
- * Course: CSE 2010, Fall 2015
- * Project: Arbitrage
- */
-
 import java.util.ArrayList;
 import java.util.Collections;
 
