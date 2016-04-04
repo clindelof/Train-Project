@@ -7,23 +7,9 @@ public class Map extends Graph{
 	
 	//constructor for number of vertices
 	public Map(int V) {
-		super(V);
-		// TODO Auto-generated constructor stub
+		super(V); //calls Graph.java constructor
 	}
 	
-	public Map(String map) {
-		Scanner sc = new Scanner("mapFile.txt");
-		
-		int numStations = sc.nextInt();
-		
-		while (sc.hasNextLine()) {
-			int start = sc.nextInt();
-			int end = sc.nextInt();
-			int weight = sc.nextInt();
-			
-			this.addEdge(start, end, weight);
-		}
-	}
 	
 	/**
 	 * Add the connection between two stations. Since tracks are able to be traversed in both directions,

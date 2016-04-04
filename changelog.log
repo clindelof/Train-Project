@@ -8,4 +8,4 @@ This will be where all updates are documented.
 04/04/2016 - Chris Lindelof - Added JavaDoc comments to Graph.java
 							- Added the addEdge(int, int, int) method to Map.java and implemented.
 							- mapFile.txt represents the example map provided in the slides from the first class of the semester.
-							
+							- removed Map.java's string constructor. It will not be able to be implemented.
