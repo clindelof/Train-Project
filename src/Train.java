@@ -4,7 +4,7 @@ public class Train implements Comparator<Train>{
 	
 	final double[] speeds = {1.0, 0.5, 0.25};
 	
-	int type; //what kind freight, passenger...
+	int type; //what kind freight, passenger, dangerous cargo...
 	double speed; //speed of train
 	
 	public Train () {
@@ -20,11 +20,22 @@ public class Train implements Comparator<Train>{
 	@Override
 	public int compare(Train o1, Train o2) {
 		// TODO Auto-generated method stub
-		return 0;
+		if (speeds[o1.type]>speeds[o2.type]) {
+			return 1;
+		}
+		else if (speeds[o1.type]<speeds[o2.type]) {
+			return -1;
+		}
+		else {
+		    return 0;
+		}
 	}
-	
+
 	@Override
-	public boolean equals () {
-		
+	public boolean equals (Train t1) {
+		if (this == t1) {
+			return true;
+		}
+		else return false;
 	}
 }
