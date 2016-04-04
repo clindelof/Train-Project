@@ -1,7 +1,11 @@
 This will be where all updates are documented. 
 
-3/30/2016 - Chris Lindelof - Added weighted graph data structure and methods. This will allow us to back our train map with a weight graph.
-						   - Added mapFile.txt - file to read map data from. First line is number of stations. Following lines are start, end, weight
-						   - Added Map.java - extends Graph.java to give lock/unlock abilties and making a map.
-						   - Added Edge.java - represents the start, end, and weight of a locked track
-						   
+03/30/2016 - Chris Lindelof - Added weighted graph data structure and methods. This will allow us to back our train map with a weight graph.
+							- Added mapFile.txt - file to read map data from. First line is number of stations. Following lines are start, end, weight
+							- Added Map.java - extends Graph.java to give lock/unlock abilties and making a map.
+							- Added Edge.java - represents the start, end, and weight of a locked track
+					
+04/04/2016 - Chris Lindelof - Added JavaDoc comments to Graph.java
+							- Added the addEdge(int, int, int) method to Map.java and implemented.
+							- mapFile.txt represents the example map provided in the slides from the first class of the semester.
+							
