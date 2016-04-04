@@ -17,6 +17,11 @@ public class Train implements Comparator<Train>{
 		this.speed = speeds[trainType];
 	}
 	
+	/*
+	 * Assumes no train will have the same speed and be different type
+	 * 
+	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+	 */
 	@Override
 	public int compare(Train o1, Train o2) {
 		// TODO Auto-generated method stub
@@ -31,7 +36,6 @@ public class Train implements Comparator<Train>{
 		}
 	}
 
-	@Override
 	public boolean equals (Train t1) {
 		if (this == t1) {
 			return true;
