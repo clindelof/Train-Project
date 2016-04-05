@@ -9,3 +9,8 @@ This will be where all updates are documented.
 							- Added the addEdge(int, int, int) method to Map.java and implemented.
 							- mapFile.txt represents the example map provided in the slides from the first class of the semester.
 							- removed Map.java's string constructor. It will not be able to be implemented.
+							- Added Departure.java to store route and departure times for trains
+							- Added Driver to be the main executable file of program
+							- Added TrainScheduler.java which is in charge of creating the Map and scheduling the trains
+							- Added inputSchedule.txt - each line contains a starting station, ending station, and expected departure time for use in the TrainScheduler class
+							- mapFile.txt has had first line (number of stations) removed because it is not going to be read from file.
