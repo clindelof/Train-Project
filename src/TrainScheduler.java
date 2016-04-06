@@ -24,10 +24,9 @@ public class TrainScheduler {
 		
 		while (sc.hasNextLine()) {
 			int startStation = sc.nextInt();
-			int endStation = sc.nextInt();
 			int expectedStartTime = sc.nextInt();
 			
-			Departure leave = new Departure(trainMap.shortestPath(startStation, endStation), expectedStartTime);
+			Departure leave = new Departure(trainMap.dijkstra(startStation), expectedStartTime);
 			
 			this.insertRoute(schedule, leave);
 		}

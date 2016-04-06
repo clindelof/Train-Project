@@ -1,10 +1,9 @@
-import java.util.LinkedList;
 
 public class Departure implements Comparable<Departure>{
-	LinkedList<Edge> route;
+	int[] route;
 	int expectedDeparture;
 	
-	public Departure (LinkedList<Edge> route_, int expectDeparture_) {
+	public Departure (int[] route_, int expectDeparture_) {
 		this.route = route_;
 		this.expectedDeparture = expectDeparture_;
 	}
