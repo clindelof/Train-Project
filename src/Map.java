@@ -74,9 +74,11 @@ public class Map extends Graph{
 		
 	int cost;
 		// get the set of vertices
+	
 	    int n = path.length;
 
 	    // dist[i] is the distance from start to finish
+	    //YAYYYYYY FOR SEARCHING> i"M SO HAPPY RIGHT NOW
 	    
 	    int[] dist = new int[n];
 
