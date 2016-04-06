@@ -6,10 +6,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-import javax.xml.soap.Node;
-
 public class Map extends Graph{
-	private static final int INFINITY = 0;
+	
 	private final File mapFile = new File("mapFile.txt");
 	private ArrayList<Edge> lockedTracks = new ArrayList<Edge>();
 	
@@ -68,14 +66,60 @@ public class Map extends Graph{
 		lockedTracks.remove(edge);
 	}
 	
+	
+	public LinkedList<Edge> dijkstra (int source) {
+		LinkedList<Edge> path = new LinkedList<Edge>();
+		
+		int[] dist = new int[this.V()];
+		int[] prev = new int[this.V()];
+		
+		ArrayList<Integer> unvisited = new ArrayList<Integer>();
+		
+		for (int i = 0; i < this.V(); i++) {
+			dist[i] = Integer.MAX_VALUE;
+			prev[i] = Integer.MIN_VALUE;
+			
+			unvisited.add(i);
+		}
+		
+		dist[source] = 0;
+		
+		while(!unvisited.isEmpty()) {
+			int min = 0;
+			
+			//select the vertex with the minimum distance from the current vertex;
+			for (int i = 0; i < dist.length; i++) {
+				if (dist[i] < dist[min]) {
+					min = i;
+				}
+			}
+			
+			unvisited.remove(min);
+			
+			//for each adjacent vertex to the current vertex
+			for (int vertex : this.adj(min)) {
+				int alt = dist[min] + weight(min, vertex);
+				
+				if (alt < dist[vertex]) {
+					dist[vertex] = alt;
+					prev[vertex] = min;
+				}
+			}
+			
+		}
+	}
+	
+	private int weight (int start, int end) {
+		return (int) this.getWeight(start, end); //all distances are integers so cast is safe
+	}
 	public int[] shortestPath(int start, int finish) {
 		
 		LinkedList<Edge> path = new LinkedList<Edge>();
 		
-	int cost;
+		int[] cost = new;
 		// get the set of vertices
 	
-	    int n = path.length;
+	    int n = path.size();
 
 	    // dist[i] is the distance from start to finish
 	    //YAYYYYYY FOR SEARCHING> i"M SO HAPPY RIGHT NOW
