@@ -67,9 +67,7 @@ public class Map extends Graph{
 	}
 	
 	
-	public LinkedList<Edge> dijkstra (int source) {
-		LinkedList<Edge> path = new LinkedList<Edge>();
-		
+	public int[] dijkstra (int source) {
 		int[] dist = new int[this.V()];
 		int[] prev = new int[this.V()];
 		
@@ -107,6 +105,8 @@ public class Map extends Graph{
 			}
 			
 		}
+		
+		return prev;
 	}
 	
 	private int weight (int start, int end) {
