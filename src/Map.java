@@ -1,10 +1,15 @@
+import java.awt.List;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
+import javax.xml.soap.Node;
+
 public class Map extends Graph{
+	private static final int INFINITY = 0;
 	private final File mapFile = new File("mapFile.txt");
 	private ArrayList<Edge> lockedTracks = new ArrayList<Edge>();
 	
@@ -63,11 +68,63 @@ public class Map extends Graph{
 		lockedTracks.remove(edge);
 	}
 	
-	public LinkedList<Edge> shortestPath(int start, int finish) {
+	public int[] shortestPath(int start, int finish) {
+		
 		LinkedList<Edge> path = new LinkedList<Edge>();
 		
-		//implement shorted path search, checking if track is locked.
-		
-		return path;
+	int cost;
+		// get the set of vertices
+	    int n = path.length;
+
+	    // dist[i] is the distance from start to finish
+	    
+	    int[] dist = new int[n];
+
+	    // s[i] is true if there is a path from start to finish
+	    
+	    boolean[] s = new boolean[n];
+
+	    // lets find that shortest distance 
+	    
+	    for(int i = 0; i < n; i++)
+	    	
+	        dist[i] = cost[start].get(i).getCost();
+
+	    s[start] = true;
+
+	    // determine n-1 paths from int start
+	    
+	    for ( int j = 2 ; j < n  ; j++ )
+	    {
+	    	
+	        int u = -1;
+
+	        for (int k = 0; k < n; k++)
+	        	
+	            if ( !s[k] && dist[k] < INFINITY)
+	            	
+	                // check if shit needs fixing
+	            	
+	                if ( u < 0 || dist[k] < dist[u])
+	                    u = k;
+	        if (u < 0)
+	            break; 
+
+	        // set s[u] to true and update the distances
+	        s[u]=true;
+
+	        for (int k = 0; k < n; k++)
+	        	
+	            if ( !s[k] && cost[u].get(k).getCost() < INFINITY )
+	            	
+	                if( dist[k] > dist[u] + cost[u].get(k).getCost())
+	                	
+	                    dist[k] = dist[u] + cost[u].get(k).getCost();
+
+	        // at this point dist[k] is the smallest cost path from
+	        // v to k of length j.
+	    }       
+	    return dist;
+}
 	}
- }
+ 
