@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 
 public class Driver {
 	
@@ -7,8 +8,14 @@ public class Driver {
 	public static void main(String[] args) {
 		
 		inputSchedule = args[0];
-		TrainScheduler schedule = new TrainScheduler(NUMBEROFSTATIONS, inputSchedule);
-		
-		//System.out.println(schedule.trainMap.toString());
+		TrainScheduler schedule;
+		try {
+			schedule = new TrainScheduler(NUMBEROFSTATIONS, inputSchedule);
+			
+			System.out.println(schedule.schedule);
+		} catch (FileNotFoundException e) {
+			System.out.println("File error");
+			e.printStackTrace();
+		}
 	}
 }

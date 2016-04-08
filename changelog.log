@@ -14,3 +14,7 @@ This will be where all updates are documented.
 							- Added TrainScheduler.java which is in charge of creating the Map and scheduling the trains
 							- Added inputSchedule.txt - each line contains a starting station, ending station, and expected departure time for use in the TrainScheduler class
 							- mapFile.txt has had first line (number of stations) removed because it is not going to be read from file.
+							
+04/06/2016 - Chris Lindelof - Added toString to Departute.java
+							- removed shortestPath()
+							- added LinkedList<Edge> dijkstra(int) 

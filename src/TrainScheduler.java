@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
@@ -10,23 +12,25 @@ public class TrainScheduler {
 	
 	public LinkedList<Departure> schedule;
 	
-	public TrainScheduler (int numberOfStations, String filePath) {
+	public TrainScheduler (int numberOfStations, String filePath) throws FileNotFoundException {
 		this.numberOfStations = numberOfStations;
 		trainMap = new Map(this.numberOfStations);
 		
 		schedule = makeSchedule(filePath);
 	}
 	
-	private LinkedList<Departure> makeSchedule(String filePath) {
+	private LinkedList<Departure> makeSchedule(String filePath) throws FileNotFoundException {
 		
 		LinkedList<Departure> schedule = new LinkedList<Departure>();
-		Scanner sc = new Scanner(filePath);
+		File file = new File(filePath);
+		Scanner sc = new Scanner(file);
 		
 		while (sc.hasNextLine()) {
 			int startStation = sc.nextInt();
+			int endStation = sc.nextInt();
 			int expectedStartTime = sc.nextInt();
 			
-			Departure leave = new Departure(trainMap.dijkstra(startStation), expectedStartTime);
+			Departure leave = new Departure(trainMap.dijkstra(startStation, endStation), expectedStartTime);
 			
 			this.insertRoute(schedule, leave);
 		}

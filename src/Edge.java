@@ -6,7 +6,7 @@ public class Edge implements Comparator<Edge>{
 	int point2;
 	int weight;
 	
-	void Pair(int p1, int p2, int weight) {
+	public Edge(int p1, int p2, int weight) {
 		this.point1 = p1;
 		this.point2 = p2;
 		this.weight = weight;
@@ -25,7 +25,11 @@ public class Edge implements Comparator<Edge>{
 		throw new RuntimeException("Uncomparable Edges");
 	}
 	
-	boolean equals(Edge second) {
+	public boolean equals(Edge second) {
 		return ((this.point1 == second.point1 && this.point2 == second.point2) || (this.point2 == second.point1 && this.point1 == second.point2)) && this.weight == second.weight;
+	}
+	
+	public boolean equals(int vertex) {
+		return (this.point1 == vertex) || (this.point2 == vertex);
 	}
 }

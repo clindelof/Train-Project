@@ -1,9 +1,10 @@
+import java.util.LinkedList;
 
 public class Departure implements Comparable<Departure>{
-	int[] route;
+	LinkedList<Edge> route;
 	int expectedDeparture;
 
-	public Departure (int[] route_, int expectDeparture_) {
+	public Departure (LinkedList<Edge> route_, int expectDeparture_) {
 		this.route = route_;
 		this.expectedDeparture = expectDeparture_;
 	}
@@ -29,10 +30,8 @@ public class Departure implements Comparable<Departure>{
 
 		sb.append('[');
 
-		for (int vertix: route ) {
-
+		for (Edge vertix: route) {
 			sb.append(vertix + ",");
-
 		}
 
 		sb.deleteCharAt(sb.length() - 1);
