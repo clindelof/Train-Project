@@ -1,8 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class TrainScheduler {
@@ -12,9 +13,13 @@ public class TrainScheduler {
 	
 	public LinkedList<Departure> schedule;
 	
+	private HashMap<Integer, Dijkstra> paths;
+	
 	public TrainScheduler (int numberOfStations, String filePath) throws FileNotFoundException {
 		this.numberOfStations = numberOfStations;
 		trainMap = new Map(this.numberOfStations);
+		
+		paths = new HashMap<Integer, Dijkstra>();
 		
 		schedule = makeSchedule(filePath);
 	}
@@ -25,36 +30,24 @@ public class TrainScheduler {
 		File file = new File(filePath);
 		Scanner sc = new Scanner(file);
 		
-		while (sc.hasNextLine()) {
+		while (sc.hasNextInt()) {
 			int startStation = sc.nextInt();
 			int endStation = sc.nextInt();
 			int expectedStartTime = sc.nextInt();
+
+			if (!paths.containsKey(startStation)) {
+				paths.put(startStation, new Dijkstra(this.trainMap, startStation));
+			}
 			
-			Departure leave = new Departure(trainMap.dijkstra(startStation, endStation), expectedStartTime);
+			Departure leave = new Departure(paths.get(startStation).pathTo(endStation), expectedStartTime);
 			
-			this.insertRoute(schedule, leave);
+			schedule.add(leave);
+			
+			Collections.sort(schedule);
 		}
 		
 		sc.close();
+		
 		return schedule;
-	}
-	
-	private void insertRoute (LinkedList<Departure> schedule, Departure toAdd) {
-		if (schedule.size() == 0) {
-			schedule.add(toAdd);
-		} else {
-			int i = 0;
-			boolean added = false;
-			while (i <= schedule.size() && !added) {
-				try {
-					if (schedule.get(i).compareTo(toAdd) == -1 && schedule.get(i + 1).compareTo(toAdd) == 1) {
-						schedule.add(i, toAdd);
-						added = true;
-					}
-				} catch (NoSuchElementException e) {
-					schedule.addLast(toAdd);
-				}
-			}
-		}
 	}
 }

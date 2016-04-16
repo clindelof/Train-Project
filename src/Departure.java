@@ -26,7 +26,7 @@ public class Departure implements Comparable<Departure>{
 
 		StringBuilder sb = new StringBuilder();	
 
-		sb.append("Expected Departure: " + this.expectedDeparture + "/n");
+		sb.append("Expected Departure: " + this.expectedDeparture + "\n");
 
 		sb.append('[');
 

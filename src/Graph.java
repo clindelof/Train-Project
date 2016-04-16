@@ -12,6 +12,12 @@ public class Graph {
         this.V=V;
         this.E=0;
         this.w = new double[V][V];
+        for (int i = 0; i < w.length; i++) {
+        	for (int j = 0; j < w[i].length; j++) {
+        		this.w[i][j] = Double.POSITIVE_INFINITY;
+        	}
+        }
+        
         adj=new ArrayList[V];
         for (int v=0;v<V;v++){
             adj[v]=new ArrayList<Integer>();

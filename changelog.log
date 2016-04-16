@@ -18,3 +18,13 @@ This will be where all updates are documented.
 04/06/2016 - Chris Lindelof - Added toString to Departute.java
 							- removed shortestPath()
 							- added LinkedList<Edge> dijkstra(int) 
+04/16/2016 - Chris Lindelof - Added Dijkstra.java
+							- removed dikstra(int) method
+							- Optimization made in scheduling, if a dijkstra from that station has been made it uses it rather than making a new one. 
+							- Graph.java now initialization all weights to Positive infinity (no possible connection)
+							- Made realization that Graph.java does not support multiple edges between paths and will select the bigger weight to keep.
+							- changed weight in Edge.java to a double
+							- added a toString() to Edge.java
+							- fixed a typo in Departure.java's toString()
+							- updated mapFile.txt to not have any double edges
+							

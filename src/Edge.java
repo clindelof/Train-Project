@@ -4,9 +4,9 @@ public class Edge implements Comparator<Edge>{
 
 	int point1;
 	int point2;
-	int weight;
+	double weight;
 	
-	public Edge(int p1, int p2, int weight) {
+	public Edge(int p1, int p2, double weight) {
 		this.point1 = p1;
 		this.point2 = p2;
 		this.weight = weight;
@@ -31,5 +31,18 @@ public class Edge implements Comparator<Edge>{
 	
 	public boolean equals(int vertex) {
 		return (this.point1 == vertex) || (this.point2 == vertex);
+	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append('{');
+		sb.append('[');
+		sb.append(this.point1 +", " +this.point2);
+		sb.append(']');
+		sb.append(", " + this.weight);
+		sb.append('}');
+		
+		return sb.toString();
 	}
 }
