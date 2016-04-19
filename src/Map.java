@@ -24,7 +24,7 @@ public class Map extends Graph{
 			while(sc.hasNextInt()) {
 				int start = sc.nextInt();
 				int end = sc.nextInt();
-				int weight = sc.nextInt();
+				double weight = sc.nextDouble() * 50.0;
 
 				this.addEdge(start, end, weight);
 			}
@@ -43,7 +43,7 @@ public class Map extends Graph{
 	 * @param endStation - vertex to end at
 	 * @param weight - weight of the connection between start and end.
 	 */
-	public void addEdge (int startStation, int endStation, int weight) {
+	public void addEdge (int startStation, int endStation, double weight) {
 		this.addWeightedEdge(startStation, endStation, weight);
 		this.addWeightedEdge(endStation, startStation, weight);
 	}

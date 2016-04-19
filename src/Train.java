@@ -1,45 +1,37 @@
-import java.util.Comparator;
 
-public class Train implements Comparator<Train>{
+public class Train implements Comparable<Train>{
 	
+	final double baseSpeed = 50;
 	final double[] speeds = {1.0, 0.5, 0.25};
 	
-	int type; //what kind freight, passenger, dangerous cargo...
+	int type; //what kind passenger, freight, dangerous cargo...
 	double speed; //speed of train
+	Departure route;
 	
-	public Train () {
-		this.type = 0; 
-		this.speed = speeds[this.type];
-	}
-	
-	public Train (int trainType) {
+	public Train (int trainType, Departure route) {
 		this.type = trainType;
-		this.speed = speeds[trainType];
-	}
-	
-	/*
-	 * Assumes no train will have the same speed and be different type
-	 * 
-	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-	 */
-	@Override
-	public int compare(Train o1, Train o2) {
-		// TODO Auto-generated method stub
-		if (speeds[o1.type]>speeds[o2.type]) {
-			return 1;
-		}
-		else if (speeds[o1.type]<speeds[o2.type]) {
-			return -1;
-		}
-		else {
-		    return 0;
-		}
+		this.speed = baseSpeed * speeds[trainType];
+		this.route = route;
 	}
 
-	public boolean equals (Train t1) {
-		if (this == t1) {
-			return true;
+	@Override
+	public int compareTo(Train o) {
+		if (this.route.expectedDeparture < o.route.expectedDeparture) {
+			return -1;
+		} else if (this.route.expectedDeparture > o.route.expectedDeparture) {
+			return 1;
 		}
-		else return false;
+		return 0;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("Train type: " + this.type +'\n');
+		sb.append("Train speed: " + this.speed + '\n');
+		sb.append(route.toString() + '\n');
+		
+		return sb.toString();
 	}
 }

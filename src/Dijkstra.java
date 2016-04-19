@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class Dijkstra {
@@ -17,7 +18,7 @@ public class Dijkstra {
 		//init all dist to infinity and previous to -1 (force exception when traversing backwards)
 		for (int i = 0; i < distTo.length; i++) {
 			distTo[i] = Double.POSITIVE_INFINITY;
-			pathTo[i] = -1; //all stations are number 1 - n
+			pathTo[i] = -1; //all stations are number 0 -> n - 1
 			unvisited.add(i);
 		}
 		distTo[source] = 0.0;
@@ -34,27 +35,29 @@ public class Dijkstra {
 	}
 	
 	private int getShortestDist(ArrayList<Integer> unvisited, double[] dist) {
-		int shortest = 0;
+		int shortest = unvisited.get(0);
 		
 		for (int i = 0; i < dist.length; i++) {
-			if (dist[shortest] > dist[i] && unvisited.contains(i)) {
-				shortest = i;
+			if (unvisited.contains(new Integer(i))) {
+				if (Double.compare(dist[shortest], dist[i]) >= 0) {
+					shortest = i;
+				}
 			}
 		}
 		
 		return shortest;
 	}
 	
-	private void relax(int eval, ArrayList<Integer> unsettled) {
+	private void relax(int eval, ArrayList<Integer> unvisited) {
 		for (Integer destination: map.adj(eval)) {
-			if (unsettled.contains(destination)) {
-				double dist = map.getWeight(eval, destination);
-				double newDist = this.distTo[eval] + dist;
-				
-				if (distTo[destination] > newDist) {
-					distTo[destination] = newDist;
-					unsettled.add(destination);
-					this.pathTo[destination] = eval; 
+			if (unvisited.contains(destination)) {
+				for (Double weight : map.getWeight(eval, destination)) {
+					double newDist = this.distTo[eval] + weight;
+					
+					if (distTo[destination] > newDist) {
+						distTo[destination] = newDist;
+						this.pathTo[destination] = eval;
+					}
 				}
 			}
 		}
@@ -65,7 +68,7 @@ public class Dijkstra {
 		int current = endStation;
 		
 		while (this.pathTo[current] != -1) {
-			path.addFirst(new Edge(this.pathTo[current], current, map.getWeight(this.pathTo[current], current)));
+			path.addFirst(new Edge(this.pathTo[current], current, Collections.min(map.getWeight(this.pathTo[current], current))));
 			
 			current = this.pathTo[current];
 		}

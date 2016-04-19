@@ -1,8 +1,8 @@
-This will be where all updates are documented. 
+This will be where all updates are documented.
 
 03/30/2016 - Chris Lindelof - Added weighted graph data structure and methods. This will allow us to back our train map with a weight graph.
 							- Added mapFile.txt - file to read map data from. First line is number of stations. Following lines are start, end, weight
-							- Added Map.java - extends Graph.java to give lock/unlock abilties and making a map.
+							- Added Map.java - extends Graph.java to give lock/unlock abilities and making a map.
 							- Added Edge.java - represents the start, end, and weight of a locked track
 					
 04/04/2016 - Chris Lindelof - Added JavaDoc comments to Graph.java
@@ -18,6 +18,7 @@ This will be where all updates are documented.
 04/06/2016 - Chris Lindelof - Added toString to Departute.java
 							- removed shortestPath()
 							- added LinkedList<Edge> dijkstra(int) 
+							
 04/16/2016 - Chris Lindelof - Added Dijkstra.java
 							- removed dikstra(int) method
 							- Optimization made in scheduling, if a dijkstra from that station has been made it uses it rather than making a new one. 
@@ -28,3 +29,10 @@ This will be where all updates are documented.
 							- fixed a typo in Departure.java's toString()
 							- updated mapFile.txt to not have any double edges
 							
+04/17/2016 - Chris Lindelof - add multi-graph functionality to Graph.java by using an arraylist<double> in all weight locations
+							- add multi-graph support to Dijkstras 
+							- Have the driver ask user for number of trains, randomly generate that many trains to schedule
+							- Add Time.java to convert unit times to minutes in day
+							- Map.java convert weights from compressed weights to actual weights representing distance
+
+04/18/2016 - Chris Lindelof -  

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,31 +10,40 @@ import java.util.Scanner;
 public class TrainScheduler {
 	public Map trainMap;
 	public int numberOfStations;
-	public ArrayList<Train> trains;
 	
-	public LinkedList<Departure> schedule;
+	public LinkedList<Train> schedule;
 	
 	private HashMap<Integer, Dijkstra> paths;
 	
-	public TrainScheduler (int numberOfStations, String filePath) throws FileNotFoundException {
+	//0 = base case, 1 = optimized
+	private final int mode = 0;
+	
+	private ArrayList<Edge>[] lockedTimes;
+	
+	@SuppressWarnings("unchecked")
+	public TrainScheduler (int numberOfStations, File inputSchedule) throws FileNotFoundException {
 		this.numberOfStations = numberOfStations;
-		trainMap = new Map(this.numberOfStations);
+		this.trainMap = new Map(this.numberOfStations);
 		
-		paths = new HashMap<Integer, Dijkstra>();
+		this.lockedTimes = (ArrayList<Edge>[]) Array.newInstance(ArrayList.class, numberOfStations);
 		
-		schedule = makeSchedule(filePath);
+		this.paths = new HashMap<Integer, Dijkstra>();
+		
+		this.schedule = makeSchedule(inputSchedule);
+		
+		this.lockTracks(mode, schedule);
 	}
 	
-	private LinkedList<Departure> makeSchedule(String filePath) throws FileNotFoundException {
+	private LinkedList<Train> makeSchedule(File file) throws FileNotFoundException {
 		
-		LinkedList<Departure> schedule = new LinkedList<Departure>();
-		File file = new File(filePath);
+		LinkedList<Train> schedule = new LinkedList<Train>();
 		Scanner sc = new Scanner(file);
 		
 		while (sc.hasNextInt()) {
 			int startStation = sc.nextInt();
 			int endStation = sc.nextInt();
 			int expectedStartTime = sc.nextInt();
+			int trainType = sc.nextInt();
 
 			if (!paths.containsKey(startStation)) {
 				paths.put(startStation, new Dijkstra(this.trainMap, startStation));
@@ -41,7 +51,7 @@ public class TrainScheduler {
 			
 			Departure leave = new Departure(paths.get(startStation).pathTo(endStation), expectedStartTime);
 			
-			schedule.add(leave);
+			schedule.add(new Train(trainType, leave));
 			
 			Collections.sort(schedule);
 		}
@@ -49,5 +59,13 @@ public class TrainScheduler {
 		sc.close();
 		
 		return schedule;
+	}
+	
+	private void lockTracks (int mode, LinkedList<Train> schedule) {
+		if (mode == 0) { //if base case
+			
+		} else if (mode == 1) { //if optimized case
+			
+		}
 	}
 }

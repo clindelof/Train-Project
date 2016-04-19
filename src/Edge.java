@@ -5,6 +5,8 @@ public class Edge implements Comparator<Edge>{
 	int point1;
 	int point2;
 	double weight;
+	int startLock;
+	int endLock;
 	
 	public Edge(int p1, int p2, double weight) {
 		this.point1 = p1;
@@ -44,5 +46,16 @@ public class Edge implements Comparator<Edge>{
 		sb.append('}');
 		
 		return sb.toString();
+	}
+	
+	public void lock (int start, int end) {
+		this.startLock = start;
+		this.endLock = end;
+	}
+	
+	public void unlock() {
+		this.startLock = -1;
+		this.endLock = -1;
+		
 	}
 }
