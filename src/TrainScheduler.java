@@ -31,7 +31,7 @@ public class TrainScheduler {
 		
 		this.schedule = makeSchedule(inputSchedule);
 		
-		this.lockTracks(mode, schedule);
+		this.calculateLocks();
 	}
 	
 	private LinkedList<Train> makeSchedule(File file) throws FileNotFoundException {
@@ -61,10 +61,10 @@ public class TrainScheduler {
 		return schedule;
 	}
 	
-	private void lockTracks (int mode, LinkedList<Train> schedule) {
-		if (mode == 0) { //if base case
+	private void calculateLocks(boolean mode, LinkedList<Train> schedule) {
+		if (!mode) {
 			
-		} else if (mode == 1) { //if optimized case
+		} else {
 			
 		}
 	}
