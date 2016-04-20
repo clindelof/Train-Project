@@ -30,8 +30,6 @@ public class TrainScheduler {
 		this.paths = new HashMap<Integer, Dijkstra>();
 		
 		this.schedule = makeSchedule(inputSchedule);
-		
-		this.calculateLocks();
 	}
 	
 	private LinkedList<Train> makeSchedule(File file) throws FileNotFoundException {
@@ -61,7 +59,7 @@ public class TrainScheduler {
 		return schedule;
 	}
 	
-	private void calculateLocks(boolean mode, LinkedList<Train> schedule) {
+	public void calculateLocks(boolean mode) {
 		if (!mode) {
 			
 		} else {
