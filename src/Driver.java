@@ -10,17 +10,18 @@ public class Driver {
 	public static final int NUMBEROFSTATIONS = 13;
 	public static int NUMBEROFTRAINS;
 	public static String inputSchedule;
+	public static int mode;
+	
+	public static final File dir = new File("./results/");
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
-		inputSchedule = args[0];
-		TrainScheduler schedule;
-
-		System.out.println("How many trains to be scheduled? ");
-
-		Scanner sc = new Scanner(System.in);
-		NUMBEROFTRAINS = sc.nextInt();
-		sc.close();
+		if (args.length == 2) {
+			NUMBEROFTRAINS = Integer.parseInt(args[0]);
+			mode = Integer.parseInt(args[1]);
+		} else {
+			Gui init = new Gui();
+		}
 
 		File inputSchedule = new File("./inputSchedule.txt");
 		Random rnd = new Random();
@@ -49,11 +50,26 @@ public class Driver {
 		}
 
 		try {
-			schedule = new TrainScheduler(NUMBEROFSTATIONS, inputSchedule);
+			TrainScheduler schedule = new TrainScheduler(NUMBEROFSTATIONS, inputSchedule, mode);
 
 			inputSchedule.delete();
 			
-			System.out.println(schedule.schedule);
+			dir.mkdir();
+			
+			String csvFilename = "./results/TrainData-"+NUMBEROFTRAINS+"-"+mode+".csv";
+			String txtFilename = "./results/Train-"+NUMBEROFTRAINS+"-"+mode+".txt";
+			File csvFile = new File(csvFilename);
+			File txtFile = new File(txtFilename);
+			
+			FileWriter csv = new FileWriter(csvFile);
+			FileWriter txt = new FileWriter(txtFile);
+			
+			csv.write(schedule.toCSV());
+			txt.write(schedule.toTXT());
+			
+			csv.close();
+			txt.close();
+			
 		} catch (FileNotFoundException e) {
 			System.out.println("File error");
 			e.printStackTrace();

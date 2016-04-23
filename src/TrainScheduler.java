@@ -12,13 +12,14 @@ public class TrainScheduler {
 	public LinkedList<Train> schedule;
 	
 	private HashMap<Integer, Dijkstra> paths;
-	
-	//0 = base case, 1 = optimized
-	private final int mode = 0;
 
-	public TrainScheduler (int numberOfStations, File inputSchedule) throws FileNotFoundException {
+	// 0 -> base, 1 -> optimized
+	private int mode;
+
+	public TrainScheduler (int numberOfStations, File inputSchedule, int mode) throws FileNotFoundException {
 		this.numberOfStations = numberOfStations;
 		this.trainMap = new Map(this.numberOfStations);
+		this.mode = mode;
 		
 		this.paths = new HashMap<Integer, Dijkstra>();
 		
@@ -92,30 +93,26 @@ public class TrainScheduler {
 	}
 	
 	public void calculateDelays() {
-
-		// start at train 1 because train 0 will experience no delay
-		// trains in schedule are sorted by their expected departure time
-		for (int i = 1; i < schedule.size(); i++) {
-			Train test = schedule.get(i);
-			
-			for (Train train : schedule) { //compare against all trains
-				if (test.equals(train)) { //don't compare the train to itself, will create bad delays that don't exist
-					continue;
-				}
-				for (Edge track : test.route.route) {
-					if (train.route.route.contains(track)) {
-						
-					}
-				}
+		
+		//start with second train, because first train will not experience delays
+		for (int i = 0; i < schedule.size(); i++) {
+			//compare only to those trains which are schedule to be on tracks before
+			for (int j = 0; j < i; j++) {
+				
 			}
+			
 		}
 	}
 	
-	private void delayTrain(Train train, int time) {
-		train.route.expectedDeparture += time;
-		for (Edge track : train.route.route) {
-			track.startLock += time;
-			track.endLock += time;
-		}
+	public String toCSV() {
+		StringBuilder sb = new StringBuilder();
+		
+		return sb.toString();
+	}
+	
+	public String toTXT() {
+		StringBuilder sb = new StringBuilder();
+		
+		return sb.toString();
 	}
 }

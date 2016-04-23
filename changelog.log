@@ -39,3 +39,8 @@ This will be where all updates are documented.
 							- working on moving the locks based on previous trains, so that we can calculate delays.
 							
 							- add more information to the equals() methods of Departure.java, Edge.java, and Train.java
+							
+							- add Testing.java, change int tests to max number of trains / 10 
+							- set up Driver.java to export the results as txt and csv files that are names according to the test case and train count.
+							
+							- added line to .gitignore to ignore all files in the ./results/ directory created by the program exporting its data.
