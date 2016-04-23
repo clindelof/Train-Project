@@ -90,7 +90,7 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
     private boolean isInt (TextField input, String message) {
     	try {
     		numOfTrains = Integer.parseInt(input.getText());
-    		return true;
+    		return numOfTrains > 0;
     	} catch (NumberFormatException e) {
     		System.out.println("Error: " + message + " is not an integer");
     		return false;
