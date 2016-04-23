@@ -1,9 +1,7 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Driver {
 
@@ -14,13 +12,13 @@ public class Driver {
 	
 	public static final File dir = new File("./results/");
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 
 		if (args.length == 2) {
 			NUMBEROFTRAINS = Integer.parseInt(args[0]);
 			mode = Integer.parseInt(args[1]);
 		} else {
-			Gui init = new Gui();
+			throw new RuntimeException("Invalid arguments provided");
 		}
 
 		File inputSchedule = new File("./inputSchedule.txt");
@@ -70,7 +68,7 @@ public class Driver {
 			csv.close();
 			txt.close();
 			
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			System.out.println("File error");
 			e.printStackTrace();
 		}

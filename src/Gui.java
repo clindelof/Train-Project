@@ -8,8 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -73,9 +71,10 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
 	    			action.setFill(Color.FIREBRICK);
 	    			action.setText("Running");
 	    			numOfTrains = Integer.parseInt (numInput.getText());
-	    			collector(answer, numOfTrains);
-	    			System.out.println(answer);
-	    			System.out.println(numOfTrains);
+	    			
+	    			String[] arguments = {Integer.toString(numOfTrains), Integer.toString(answer)};
+	    			
+					Driver.main(arguments);
 	    		} else {
 	    			alertBox ();
 	    		}
@@ -88,25 +87,6 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
         primaryStage.setScene(scene);
         primaryStage.show();
 	}
-
-    public void collector(int answer, int numOfTrains) {
-    	Stage window = new Stage ();
-    	window.setTitle("collector");
-    	Label label = new Label();
-    	label.setText("form");
-    	
-    	Button closeButton = new Button();
-    	closeButton.setText("close");
-    	
-    	Pane layout = new Pane();
-        closeButton.setLayoutX(100);
-        closeButton.setLayoutY(50);
-    	layout.getChildren().addAll(label, closeButton);
-    	
-    	Scene scene = new Scene(layout, 240, 200);
-    	window.setScene(scene);
-    	window.show();
-    }
     
     private boolean isInt (TextField input, String message) {
     	try {
@@ -137,9 +117,10 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
     	window.setScene(scene);
     	window.showAndWait();
     }
-    
+
+
 	@Override
-	public void handle(ActionEvent arg0) {
+	public void handle(ActionEvent event) {
 		// TODO Auto-generated method stub
 		
 	}
