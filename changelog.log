@@ -35,5 +35,5 @@ This will be where all updates are documented.
 							- Add Time.java to convert unit times to minutes in day
 							- Map.java convert weights from compressed weights to actual weights representing distance
 
-04/18/2016 - Chris Lindelof - Lock tracks
+04/23/2016 - Chris Lindelof - Lock tracks by testing mode
 							- working on moving the locks based on previous trains, so that we can calculate delays.
