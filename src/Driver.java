@@ -9,14 +9,21 @@ public class Driver {
 	public static int NUMBEROFTRAINS;
 	public static String inputSchedule;
 	public static int mode;
+	public static boolean testing; 
 	
 	public static final File dir = new File("./results/");
 
 	public static void main(String[] args) {
 
-		if (args.length == 2) {
+		if (args.length >= 2) {
 			NUMBEROFTRAINS = Integer.parseInt(args[0]);
 			mode = Integer.parseInt(args[1]);
+			
+			try {
+				testing = Boolean.getBoolean(args[2]);
+			} catch (IndexOutOfBoundsException e) {
+				testing = false;
+			}
 		} else {
 			throw new RuntimeException("Invalid arguments provided");
 		}
@@ -43,11 +50,7 @@ public class Driver {
 			}
 
 			fw.close();
-		} catch (IOException e) {
-			System.out.println("ERROR with creating file");
-		}
-
-		try {
+		
 			TrainScheduler schedule = new TrainScheduler(NUMBEROFSTATIONS, inputSchedule, mode);
 
 			inputSchedule.delete();
@@ -68,6 +71,9 @@ public class Driver {
 			csv.close();
 			txt.close();
 			
+			if (!testing) {
+				//call gui for results
+			}
 		} catch (IOException e) {
 			System.out.println("File error");
 			e.printStackTrace();

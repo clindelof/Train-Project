@@ -11,7 +11,7 @@ public class Testing {
 			//uses numbers 1 and 2 for testing
 			for (int j = 0; j < 2; j++) {
 				System.out.println("Testing: " + i * 10 + " trains, using " + cases[j] + " case.");
-				String[] arguments = {Integer.toString(i * 10), Integer.toString(j)};
+				String[] arguments = {Integer.toString(i * 10), Integer.toString(j), "true"};
 				Driver.main(arguments);
 			}
 		}

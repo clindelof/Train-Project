@@ -70,7 +70,6 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
 	    			//call the program
 	    			action.setFill(Color.FIREBRICK);
 	    			action.setText("Running");
-	    			numOfTrains = Integer.parseInt (numInput.getText());
 	    			
 	    			String[] arguments = {Integer.toString(numOfTrains), Integer.toString(answer)};
 	    			
