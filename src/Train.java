@@ -7,6 +7,7 @@ public class Train implements Comparable<Train>{
 	int type; //what kind passenger, freight, dangerous cargo...
 	double speed; //speed of train
 	Departure route;
+	int timeDelayed;
 	
 	public Train (int trainType, Departure route) {
 		this.type = trainType;
@@ -24,6 +25,9 @@ public class Train implements Comparable<Train>{
 		return 0;
 	}
 	
+	public void setDelay(int delay) {
+		this.timeDelayed = delay;
+	}
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
