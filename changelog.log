@@ -37,3 +37,5 @@ This will be where all updates are documented.
 
 04/23/2016 - Chris Lindelof - Lock tracks by testing mode
 							- working on moving the locks based on previous trains, so that we can calculate delays.
+							
+							- add more information to the equals() methods of Departure.java, Edge.java, and Train.java

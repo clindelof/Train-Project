@@ -92,6 +92,30 @@ public class TrainScheduler {
 	}
 	
 	public void calculateDelays() {
-		
+
+		// start at train 1 because train 0 will experience no delay
+		// trains in schedule are sorted by their expected departure time
+		for (int i = 1; i < schedule.size(); i++) {
+			Train test = schedule.get(i);
+			
+			for (Train train : schedule) { //compare against all trains
+				if (test.equals(train)) { //don't compare the train to itself, will create bad delays that don't exist
+					continue;
+				}
+				for (Edge track : test.route.route) {
+					if (train.route.route.contains(track)) {
+						
+					}
+				}
+			}
+		}
+	}
+	
+	private void delayTrain(Train train, int time) {
+		train.route.expectedDeparture += time;
+		for (Edge track : train.route.route) {
+			track.startLock += time;
+			track.endLock += time;
+		}
 	}
 }

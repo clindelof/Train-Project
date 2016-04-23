@@ -28,7 +28,7 @@ public class Edge implements Comparator<Edge>{
 	}
 	
 	public boolean equals(Edge second) {
-		return ((this.point1 == second.point1 && this.point2 == second.point2) || (this.point2 == second.point1 && this.point1 == second.point2)) && this.weight == second.weight;
+		return (((this.point1 == second.point1 && this.point2 == second.point2) || (this.point2 == second.point1 && this.point1 == second.point2))) && (this.weight == second.weight);
 	}
 	
 	public boolean equals(int vertex) {

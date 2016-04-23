@@ -25,6 +25,9 @@ public class Train implements Comparable<Train>{
 		return 0;
 	}
 	
+	public boolean equals(Train o) {
+		return (this.type == o.type) && (this.route.equals(o.route));
+	}
 	public void setDelay(int delay) {
 		this.timeDelayed = delay;
 	}

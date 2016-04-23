@@ -20,6 +20,9 @@ public class Departure implements Comparable<Departure>{
 		}
 	}
 
+	public boolean equals(Departure o) {
+		return (this.route.equals(o.route)) && (this.expectedDeparture == o.expectedDeparture);
+	}
 	@Override
 	public String toString() {
 
