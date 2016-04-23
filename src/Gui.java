@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,8 +10,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Gui extends Application implements EventHandler<ActionEvent>{
@@ -41,7 +44,6 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
 	    	@Override
 	    	public void handle(ActionEvent event) {
 	    		answer = 0;
-	    		collector.display("collector", "form");
 	    	}
 	    });
         
@@ -51,7 +53,7 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
 	    	@Override
 	    	public void handle(ActionEvent event) {
 	    		answer = 1;
-	    		collector.display("collector", "form");
+//	    		collector.display("collector", "form");
 	    	}
 	    });
         
@@ -70,6 +72,12 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
 	    			//call the program
 	    			action.setFill(Color.FIREBRICK);
 	    			action.setText("Running");
+	    			numOfTrains = Integer.parseInt (numInput.getText());
+	    			collector(answer, numOfTrains);
+	    			System.out.println(answer);
+	    			System.out.println(numOfTrains);
+	    		} else {
+	    			alertBox ();
 	    		}
 	    	}
 	    });
@@ -81,6 +89,25 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
         primaryStage.show();
 	}
 
+    public void collector(int answer, int numOfTrains) {
+    	Stage window = new Stage ();
+    	window.setTitle("collector");
+    	Label label = new Label();
+    	label.setText("form");
+    	
+    	Button closeButton = new Button();
+    	closeButton.setText("close");
+    	
+    	Pane layout = new Pane();
+        closeButton.setLayoutX(100);
+        closeButton.setLayoutY(50);
+    	layout.getChildren().addAll(label, closeButton);
+    	
+    	Scene scene = new Scene(layout, 240, 200);
+    	window.setScene(scene);
+    	window.show();
+    }
+    
     private boolean isInt (TextField input, String message) {
     	try {
     		numOfTrains = Integer.parseInt(input.getText());
@@ -89,6 +116,26 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
     		System.out.println("Error: " + message + " is not an integer");
     		return false;
     	}
+    }
+    
+    public void alertBox () {
+    	Stage window = new Stage();
+    	
+    	window.initModality(Modality.APPLICATION_MODAL);
+    	window.setTitle("Alert");
+    	window.setMinWidth(250);
+    	window.setMinHeight(150);
+    	
+    	Label label = new Label();
+    	label.setText("the input does not fulfill the requirement");
+    	
+    	VBox layout = new VBox (10);
+    	layout.getChildren().addAll(label);
+    	layout.setAlignment(Pos.CENTER);
+    	
+    	Scene scene = new Scene (layout);
+    	window.setScene(scene);
+    	window.showAndWait();
     }
     
 	@Override
