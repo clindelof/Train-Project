@@ -29,7 +29,7 @@ public class Driver {
 		}
 
 		File inputSchedule = new File("./inputSchedule.txt");
-		Random rnd = new Random();
+		Random rnd = new Random(123456789);
 		
 		try {
 			FileWriter fw = new FileWriter(inputSchedule);
