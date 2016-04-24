@@ -47,20 +47,5 @@ public class Map extends Graph{
 		this.addWeightedEdge(startStation, endStation, weight);
 		this.addWeightedEdge(endStation, startStation, weight);
 	}
-
-	/*
-	 * Return if a track is locked
-	 */
-	public boolean isLocked(Edge edge) {
-		return lockedTracks.contains(edge);
-	}
-
-	public void lock(Edge edge) {
-		lockedTracks.add(edge);
-	}
-
-	public void unlock(Edge edge) {
-		lockedTracks.remove(edge);
-	}
 }
 

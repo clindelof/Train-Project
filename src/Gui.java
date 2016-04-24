@@ -22,8 +22,6 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
         launch(args);
     }
 
-	
-//return pair instead of void
     @Override
     public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("Train Dispatch Map");

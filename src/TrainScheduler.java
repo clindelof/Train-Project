@@ -24,6 +24,8 @@ public class TrainScheduler {
 		this.paths = new HashMap<Integer, Dijkstra>();
 		
 		this.schedule = makeSchedule(inputSchedule);
+		
+		this.calculateLocks();
 	}
 
 	private LinkedList<Train> makeSchedule(File file) throws FileNotFoundException {
@@ -49,7 +51,7 @@ public class TrainScheduler {
 		}
 		
 		sc.close();
-		
+
 		return schedule;
 	}
 	
@@ -76,7 +78,8 @@ public class TrainScheduler {
 				
 				// sum the times for each track
 				for (Edge track : train.route.route) {
-					end = end + (int) Math.ceil(train.speed * track.weight);
+
+					end += (int) Math.ceil(train.speed * track.weight);
 				}
 				
 				// assign the start and end time for all tracks in the route
