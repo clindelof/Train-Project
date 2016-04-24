@@ -95,9 +95,12 @@ public class TrainScheduler {
 	public void calculateDelays() {
 		
 		//start with second train, because first train will not experience delays
-		for (int i = 0; i < schedule.size(); i++) {
+		for (int i = 1; i < schedule.size(); i++) {
+			Train toBeScheduled = schedule.get(i);
 			//compare only to those trains which are schedule to be on tracks before
 			for (int j = 0; j < i; j++) {
+				Train causingDelay = schedule.get(j);
+				
 				
 			}
 			

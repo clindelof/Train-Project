@@ -41,5 +41,5 @@ This will be where all updates are documented.
 							- add Testing.java, change int tests to max number of trains / 10 
 							- set up Driver.java to export the results as txt and csv files that are names according to the test case and train count.
 							- added line to .gitignore to ignore all files in the ./results/ directory created by the program exporting its data.
-							
 							- tweaked Gengbo's gui to work without collector method, and to provide input to Driver.java just like Testing.java does
+							- add README.txt per requirements this file will explain how to run the program.
