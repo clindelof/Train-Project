@@ -18,7 +18,7 @@ public class Graph {
 			}
 		}
 
-		adj=new ArrayList[V];
+		adj = (ArrayList<Integer>[]) Array.newInstance(ArrayList.class, V);
 		for (int v=0;v<V;v++){
 			adj[v]=new ArrayList<Integer>();
 		}

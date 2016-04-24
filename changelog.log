@@ -44,3 +44,21 @@ This will be where all updates are documented.
 							- tweaked Gengbo's gui to work without collector method, and to provide input to Driver.java just like Testing.java does
 							- add README.txt per requirements this file will explain how to run the program.
 							- close Gui's window upon completion of run in preparation for the results window to open.
+							
+04/24/2016 - Chris Lindelof - restructured to use the same track objects
+							- track objects now contain a list of when the track is locked
+							- list of when track is locked is used to delay passaged through that track
+							- departure is said to happen when it is expected, but it will not traverse a track that it cannot get on because it is locked
+							- expected arrival time is calculated with zero delay and just the use of track weights and trains speed.
+							- actual arrival is when the lock on the final track would end (its arrival).
+							- some LinkedList's were replaced with ArrayList's for O(1) access if we were accessing the list sequentially more than sorting of inserting in front
+							- Lock.java added to represent the lock times in the list
+							- Pair.java added to represent the track and lock time that was granted to the train that requested it
+							- Edge.java was renamed track for authenticity
+							- Dijkstra's was updated to reference a HashMap to use pre-existing track objects to allow the track to determine if it is locked
+							- Departure.java has become a capsule, its not used to represent data after it is used to instantiate Train.java
+							- TrainScheduler.java now has a calculateLocks() method
+								- this method uses the case being tested to determine how to calculate the length of the lock it then asks track.java if it is available
+								- track.java searches to see if that time is available, if it isn't it delays the Lock until the next available window and returns the new Lock	
+							- toCSV and toTXT methods added for exporting the information into Excel and/printing to screen.
+							

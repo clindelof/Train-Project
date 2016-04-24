@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Dijkstra {
@@ -63,12 +64,20 @@ public class Dijkstra {
 		}
 	}
 
-	public LinkedList<Edge> pathTo(int endStation) {
-		LinkedList<Edge> path = new LinkedList<Edge>();
+	public LinkedList<Track> pathTo(int endStation, HashMap<Track, Integer> tracks, HashMap<Integer, Track> trackId) {
+		LinkedList<Track> path = new LinkedList<Track>();
 		int current = endStation;
 		
 		while (this.pathTo[current] != -1) {
-			path.addFirst(new Edge(this.pathTo[current], current, Collections.min(map.getWeight(this.pathTo[current], current))));
+			Track temp = new Track(this.pathTo[current], current, Collections.min(map.getWeight(this.pathTo[current], current)));
+			
+			if (!tracks.containsKey(temp)) {
+				tracks.put(temp, tracks.size());
+				trackId.put(trackId.size(), temp);
+				path.addFirst(temp);
+			} else {
+				path.addFirst(trackId.get(tracks.get(temp)));
+			}
 			
 			current = this.pathTo[current];
 		}

@@ -1,10 +1,10 @@
 import java.util.LinkedList;
 
 public class Departure implements Comparable<Departure>{
-	LinkedList<Edge> route;
+	LinkedList<Track> route;
 	int expectedDeparture;
 
-	public Departure (LinkedList<Edge> route_, int expectDeparture_) {
+	public Departure (LinkedList<Track> route_, int expectDeparture_) {
 		this.route = route_;
 		this.expectedDeparture = expectDeparture_;
 	}
@@ -33,7 +33,7 @@ public class Departure implements Comparable<Departure>{
 
 		sb.append('[');
 
-		for (Edge vertix: route) {
+		for (Track vertix: route) {
 			sb.append(vertix + ",");
 		}
 

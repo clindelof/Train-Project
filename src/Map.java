@@ -1,13 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Map extends Graph{
 
 	private final File mapFile = new File("mapFile.txt");
-	private ArrayList<Edge> lockedTracks = new ArrayList<Edge>();
-
 	//constructor for number of vertices
 	public Map(int V) {
 		super(V); //calls Graph.java constructor
@@ -48,4 +45,3 @@ public class Map extends Graph{
 		this.addWeightedEdge(endStation, startStation, weight);
 	}
 }
-
