@@ -1,5 +1,6 @@
 import java.io.File;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import javafx.application.Application;
@@ -23,7 +24,7 @@ public class guiTableResult extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         Collection<TrainSchedulerData> list = 
-        		Files.readAllLines(new File("c:/inputSchedule.txt").toPath()).stream()
+        		Files.readAllLines(this.mostRecent(new File("./results/txt/").listFiles())).stream()
                         .map(line -> {
                             String[] details = line.split(",");
                             TrainSchedulerData cd = new TrainSchedulerData();
@@ -67,7 +68,19 @@ public class guiTableResult extends Application{
         primaryStage.show();
     }
 
-     private class TrainSchedulerData {
+     private Path mostRecent(File[] listFiles) {
+		int mostRecent = 0;
+		
+		for (int i = 1; i < listFiles.length; i++) {
+			if (listFiles[mostRecent].lastModified() < listFiles[i].lastModified()) {
+				mostRecent = i;
+			}
+		}
+		
+		return listFiles[mostRecent].toPath();
+	}
+
+	private class TrainSchedulerData {
         StringProperty trainNum = new SimpleStringProperty();
         StringProperty start = new SimpleStringProperty();
         StringProperty end = new SimpleStringProperty();

@@ -61,9 +61,11 @@ public class Driver {
 			inputSchedule.delete();
 			
 			dir.mkdir();
+			new File("./results/csv").mkdir();
+			new File("./results/txt/").mkdir();
 			
-			String csvFilename = "./results/TrainData-"+NUMBEROFTRAINS+"-"+mode+".csv";
-			String txtFilename = "./results/Train-"+NUMBEROFTRAINS+"-"+mode+".txt";
+			String csvFilename = "./results/csv/TrainData-"+NUMBEROFTRAINS+"-"+mode+".csv";
+			String txtFilename = "./results/txt/Train-"+NUMBEROFTRAINS+"-"+mode+".txt";
 			File csvFile = new File(csvFilename);
 			File txtFile = new File(txtFilename);
 			
