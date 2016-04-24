@@ -43,7 +43,7 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
 	    	}
 	    });
         
-        Button optButton = new Button("Opt");
+        Button optButton = new Button("Optimized");
         GridPane.setConstraints(optButton, 2, 2);
         optButton.setOnAction(new EventHandler<ActionEvent>(){
 	    	@Override
