@@ -4,6 +4,8 @@ This will be where all updates are documented.
 							- Added mapFile.txt - file to read map data from. First line is number of stations. Following lines are start, end, weight
 							- Added Map.java - extends Graph.java to give lock/unlock abilities and making a map.
 							- Added Edge.java - represents the start, end, and weight of a locked track
+
+04/02/2016 - Gengbo Liu     - Added train.java - represents the different kinds of train with speeds
 					
 04/04/2016 - Chris Lindelof - Added JavaDoc comments to Graph.java
 							- Added the addEdge(int, int, int) method to Map.java and implemented.
@@ -18,7 +20,9 @@ This will be where all updates are documented.
 04/06/2016 - Chris Lindelof - Added toString to Departute.java
 							- removed shortestPath()
 							- added LinkedList<Edge> dijkstra(int) 
-							
+
+04/15/2016 - Gengbo Liu     - Added Gui for the whole project using framework javafx
+					
 04/16/2016 - Chris Lindelof - Added Dijkstra.java
 							- removed dikstra(int) method
 							- Optimization made in scheduling, if a dijkstra from that station has been made it uses it rather than making a new one. 
@@ -28,12 +32,15 @@ This will be where all updates are documented.
 							- added a toString() to Edge.java
 							- fixed a typo in Departure.java's toString()
 							- updated mapFile.txt to not have any double edges
+		   - Gengbo Liu     - Added Gui alert box to pop up window when the user type in the number does not fulfill the requirement
 							
 04/17/2016 - Chris Lindelof - add multi-graph functionality to Graph.java by using an arraylist<double> in all weight locations
 							- add multi-graph support to Dijkstras 
 							- Have the driver ask user for number of trains, randomly generate that many trains to schedule
 							- Add Time.java to convert unit times to minutes in day
 							- Map.java convert weights from compressed weights to actual weights representing distance
+
+04/20/2016 - Gengbo Liu     - Added Gui table to show the result of project which convert the txt file to javafx table view
 
 04/23/2016 - Chris Lindelof - Lock tracks by testing mode
 							- working on moving the locks based on previous trains, so that we can calculate delays.
@@ -64,4 +71,5 @@ This will be where all updates are documented.
 							
 							- format toTXT to provide table view
 							- open .txt when the program is done calculating the paths.
+		   - Gengbo Liu     - deleted Gui table and using .txt window to show the result
 							
