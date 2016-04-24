@@ -62,3 +62,6 @@ This will be where all updates are documented.
 								- track.java searches to see if that time is available, if it isn't it delays the Lock until the next available window and returns the new Lock	
 							- toCSV and toTXT methods added for exporting the information into Excel and/printing to screen.
 							
+							- format toTXT to provide table view
+							- open .txt when the program is done calculating the paths.
+							

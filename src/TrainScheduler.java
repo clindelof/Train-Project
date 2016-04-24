@@ -2,8 +2,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class TrainScheduler {
@@ -114,12 +116,13 @@ public class TrainScheduler {
 	
 	public String toTXT() {
 		StringBuilder sb = new StringBuilder();
+		Formatter format = new Formatter(sb, Locale.US);
 		
-		sb.append("Train #, Start, End, Route, Expected Departure, Expected Arrival, Delay\n");
+		format.format("%1$-10s%2$-10s%3$-10s%4$-25s%5$-20s%6$-20s%7$-10s\n", "Train #", "Start", "End", "Route", "Expected Departure", "Expected Arrival", "Delay");
+		
 		for (int i = 0; i < schedule.size(); i++) {
 			Train train = schedule.get(i);
-			sb.append(i + "," + train.start() + "," + train.end()+"," + train.route()  +"," + train.expectedDeparture + "," + train.expectedTime() + "," + train.getDelay());
-			sb.append('\n');
+			format.format("%1$-10s%2$-10s%3$-10s%4$-25s%5$-20s%6$-20s%7$-10s\n",i, train.start(), train.end(), train.route(),train.expectedDeparture , train.expectedTime() ,train.getDelay());
 		}
 		
 		return sb.toString();

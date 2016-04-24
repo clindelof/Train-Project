@@ -3,7 +3,7 @@ import java.io.IOException;
 public class Testing {
 	
 	public static void main(String[] args) throws IOException {
-		final int tests = 5;// 1000; //change this number to change the number of tests running
+		final int tests = 5; //change this number to change the number of tests running
 		String[] cases = {"base", "optimized"}; 
 		System.out.println("TESTING...");
 		
@@ -19,5 +19,4 @@ public class Testing {
 			}
 		}
 	}
-
 }

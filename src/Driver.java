@@ -1,3 +1,4 @@
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -73,15 +74,15 @@ public class Driver {
 			FileWriter txt = new FileWriter(txtFile);
 			
 			csv.write(schedule.toCSV());
-			csv.write("Elapsed time for run: " + elapsed);
+			csv.write("Elapsed time for run: " + elapsed + " milliseconds");
 			txt.write(schedule.toTXT());
-			txt.write("Elapsed time for run: " + elapsed);
+			txt.write("Elapsed time for run: " + elapsed + " milliseconds");
 			
 			csv.close();
 			txt.close();
 			
 			if (!testing) {
-				//call gui for results
+				Desktop.getDesktop().open(txtFile);
 			}
 		} catch (IOException e) {
 			System.out.println("File error");
