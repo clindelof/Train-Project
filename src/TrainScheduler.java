@@ -101,21 +101,59 @@ public class TrainScheduler {
 			for (int j = 0; j < i; j++) {
 				Train causingDelay = schedule.get(j);
 				
-				
+				// check any track is in a previous trains route
+				for (Edge track : toBeScheduled.route.route) {
+					//if it does, check the lock time
+					if (causingDelay.route.route.contains(track)) {
+						Edge delayTrack = causingDelay.route.route.get(causingDelay.route.route.indexOf(track));
+						
+						if (delayTrack.startLock >= track.endLock) { //no problem exists, lock is prior to next trains usage
+							
+						} else if (delayTrack.endLock <= track.startLock) { // no problem exists, lock is after second train needs track
+							
+						} else { //if not before or after, they intersect.
+							int delayTime = delayTrack.endLock - track.startLock;
+							
+							this.delayTrain(toBeScheduled, delayTime);
+						}
+					}
+				}
 			}
 			
 		}
 	}
 	
+	private void delayTrain(Train toBeScheduled, int delayTime) {
+		toBeScheduled.timeDelayed += delayTime;
+		
+		for (Edge track: toBeScheduled.route.route) {
+			track.startLock += delayTime;
+			track.endLock += delayTime;
+		}
+	}
+
 	public String toCSV() {
 		StringBuilder sb = new StringBuilder();
 		
+		sb.append("Train #,Start,End,Expected Departure,Actual Departure,Delay\n");
+		for (int i = 0; i < schedule.size(); i++) {
+			Train train = schedule.get(i);
+			sb.append(i + "," + train.start() + "," + train.end()+ "," + train.route.expectedDeparture + "," + (train.route.expectedDeparture + train.timeDelayed) + "," + train.timeDelayed);
+			sb.append('\n');
+		}
 		
 		return sb.toString();
 	}
 	
 	public String toTXT() {
 		StringBuilder sb = new StringBuilder();
+		
+		sb.append("Train #, Start, End, Route, Expected Departure, Actual Departure, Delay\n");
+		for (int i = 0; i < schedule.size(); i++) {
+			Train train = schedule.get(i);
+			sb.append(i + "," + train.start() + "," + train.end()+"," + train.route()  +"," + train.route.expectedDeparture + "," + (train.route.expectedDeparture + train.timeDelayed) + "," + train.timeDelayed);
+			sb.append('\n');
+		}
 		
 		return sb.toString();
 	}

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Train implements Comparable<Train>{
 	
@@ -40,5 +41,29 @@ public class Train implements Comparable<Train>{
 		sb.append(route.toString() + '\n');
 		
 		return sb.toString();
+	}
+	
+	public int start() {
+		return this.route.route.getFirst().point1;
+	}
+	
+	public int end() {
+		return this.route.route.getLast().point2;
+	}
+
+	public ArrayList<Integer> route() {
+		ArrayList<Integer> path = new ArrayList<Integer>();
+		
+		if (this.route.route.size() == 1) {
+			path.add(this.route.route.getFirst().point1);
+			path.add(this.route.route.getFirst().point2);
+			
+			return path;
+		}
+		for (Edge track : this.route.route) {
+			path.add(track.point1);
+		}
+		
+		return path;
 	}
 }

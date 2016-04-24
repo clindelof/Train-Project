@@ -42,7 +42,7 @@ public class Driver {
 					end = rnd.nextInt(NUMBEROFSTATIONS);
 				} while (end == start);
 
-				Time time = new Time(rnd.nextInt(120));
+				Time time = new Time(rnd.nextInt(1 /*120*/));
 
 				int type = rnd.nextInt(3);
 
@@ -72,6 +72,7 @@ public class Driver {
 			txt.close();
 			
 			if (!testing) {
+				
 				//call gui for results
 			}
 		} catch (IOException e) {

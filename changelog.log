@@ -43,3 +43,4 @@ This will be where all updates are documented.
 							- added line to .gitignore to ignore all files in the ./results/ directory created by the program exporting its data.
 							- tweaked Gengbo's gui to work without collector method, and to provide input to Driver.java just like Testing.java does
 							- add README.txt per requirements this file will explain how to run the program.
+							- close Gui's window upon completion of run in preparation for the results window to open.

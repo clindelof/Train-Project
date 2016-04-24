@@ -51,7 +51,6 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
 	    	@Override
 	    	public void handle(ActionEvent event) {
 	    		answer = 1;
-//	    		collector.display("collector", "form");
 	    	}
 	    });
         
@@ -74,6 +73,8 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
 	    			String[] arguments = {Integer.toString(numOfTrains), Integer.toString(answer)};
 	    			
 					Driver.main(arguments);
+					
+					primaryStage.close();
 	    		} else {
 	    			alertBox ();
 	    		}
