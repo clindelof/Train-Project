@@ -91,6 +91,8 @@ public class TrainScheduler {
 					Lock grantedTime = track.addLock(lockStart, lockEnd);
 					
 					path.add(new Pair<Track, Lock>(track, grantedTime));
+					
+					start = grantedTime.end;
 				}
 				
 				train.setGrantedPath(path);

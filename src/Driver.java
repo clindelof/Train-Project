@@ -51,8 +51,13 @@ public class Driver {
 
 			fw.close();
 		
+			long start = System.currentTimeMillis();
 			TrainScheduler schedule = new TrainScheduler(NUMBEROFSTATIONS, inputSchedule, mode);
-
+			
+			long end = System.currentTimeMillis();
+			
+			long elapsed = end - start;
+			
 			inputSchedule.delete();
 			
 			dir.mkdir();
@@ -66,7 +71,9 @@ public class Driver {
 			FileWriter txt = new FileWriter(txtFile);
 			
 			csv.write(schedule.toCSV());
+			csv.write("Elapsed time for run: " + elapsed);
 			txt.write(schedule.toTXT());
+			txt.write("Elapsed time for run: " + elapsed);
 			
 			csv.close();
 			txt.close();
