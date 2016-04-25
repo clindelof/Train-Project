@@ -72,4 +72,5 @@ This will be where all updates are documented.
 							- format toTXT to provide table view
 							- open .txt when the program is done calculating the paths.
 		   - Gengbo Liu     - deleted Gui table and using .txt window to show the result
+		                    - made some small change to make gui look better
 							
