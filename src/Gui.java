@@ -53,7 +53,7 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
 	    });
         
         Label numLabel = new Label("number of train");
-        GridPane.setConstraints(numLabel, 0, 8);
+        GridPane.setConstraints(numLabel, 1, 7);
         final TextField numInput = new TextField();
         numInput.setPromptText("Please Enter Integer");
         GridPane.setConstraints(numInput, 1, 8);
@@ -81,7 +81,7 @@ public class Gui extends Application implements EventHandler<ActionEvent>{
         
         grid.getChildren().addAll(baseButton, optButton, numLabel, numInput, runButton, action);
         
-        Scene scene = new Scene(grid, 600, 400);
+        Scene scene = new Scene(grid, 300, 250);
         primaryStage.setScene(scene);
         primaryStage.show();
 	}
