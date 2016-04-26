@@ -43,7 +43,7 @@ public class Driver {
 					end = rnd.nextInt(NUMBEROFSTATIONS);
 				} while (end == start);
 
-				Time time = new Time(rnd.nextInt(120));
+				int time = rnd.nextInt(24);
 
 				int type = rnd.nextInt(3);
 
